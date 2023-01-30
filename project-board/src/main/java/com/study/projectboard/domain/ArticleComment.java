@@ -1,7 +1,18 @@
 package com.study.projectboard.domain;
 
-import java.time.LocalDateTime;
+import lombok.Getter;
+import lombok.ToString;
 
+import java.time.LocalDateTime;
+@Getter
+@ToString
+@Table(indexes = {
+        @Index(columnList = "title"),
+        @Index(columnList = "hashtag"),
+        @Index(columnList = "createdAt"),
+        @Index(columnList = "createdBy")
+})
+@Entity
 public class ArticleComment {
     private Long id;
     private Article article; // 게시글 (ID)
