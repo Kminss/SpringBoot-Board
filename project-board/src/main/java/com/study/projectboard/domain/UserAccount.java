@@ -8,7 +8,7 @@ import lombok.ToString;
 import java.util.Objects;
 
 @Getter
-@ToString
+@ToString(callSuper = true)
 @Table(indexes = {
         @Index(columnList = "userId"),
         @Index(columnList = "email", unique = true),
@@ -16,7 +16,7 @@ import java.util.Objects;
         @Index(columnList = "createdBy"),
 })
 @Entity
-public class UserAccount {
+public class UserAccount extends AuditingFields{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -44,7 +44,7 @@ public class UserAccount {
         this.memo = memo;
     }
 
-    private static UserAccount of(String userId, String userPassword, String email, String nickname, String memo) {
+    public static UserAccount of(String userId, String userPassword, String email, String nickname, String memo) {
         return new UserAccount(userId, userPassword, email, nickname, memo);
     }
 
