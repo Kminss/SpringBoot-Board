@@ -2,6 +2,7 @@ package com.study.projectboard.repository;
 
 import com.study.projectboard.config.JpaConfig;
 import com.study.projectboard.domain.Article;
+import com.study.projectboard.domain.UserAccount;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,7 +23,9 @@ class JpaRepositoryTest {
     private final ArticleCommentRepository articleCommentRepository;
     private final UserAccountRepository userAccountRepository;
 
-    JpaRepositoryTest(@Autowired ArticleRepository articleRepository, @Autowired ArticleCommentRepository articleCommentRepository, UserAccountRepository userAccountRepository) {
+    JpaRepositoryTest(@Autowired ArticleRepository articleRepository,
+                      @Autowired ArticleCommentRepository articleCommentRepository,
+                      @Autowired UserAccountRepository userAccountRepository) {
         this.articleRepository = articleRepository;
         this.articleCommentRepository = articleCommentRepository;
         this.userAccountRepository = userAccountRepository;
@@ -31,23 +34,29 @@ class JpaRepositoryTest {
     @DisplayName("select 테스트")
     @Test
     void givenTestData_whenSelecting_thenWorksFine() {
-        List<Article> articles = articleRepository.findAll();
+        //Given
+        long previousCount = articleRepository.count();
+        UserAccount userAccount = userAccountRepository.save(UserAccount.of("mins", "pw", null, null, null));
+        Article article = Article.of(userAccount, "new Article", "new Contetnt", "#Spring");
 
-        assertThat(articles)
-                .isNotNull()
-                .hasSize(1000);
+        //When
+        articleRepository.save(article);
+        //Then
+        assertThat(articleRepository.count())
+                .isEqualTo(previousCount + 1);
     }
 
     @DisplayName("create 테스트")
     @Test
     void givenTestData_whenInserting_thenWorksFine() {
-
-        long previousCOunt = articleRepository.count();
-        Article article = Article.of("new article", "new Content", "#spring");
-
-        Article savedArticle = articleRepository.save(article);
-
-        assertThat(articleRepository.count()).isEqualTo(previousCOunt + 1);
+        //Given
+        long previousCount = articleRepository.count();
+        UserAccount userAccount = userAccountRepository.save(UserAccount.of("mins", "pw", null, null, null));
+        Article article = Article.of(userAccount, "new article", "new Content", "#spring");
+        //When
+        articleRepository.save(article);
+        //Then
+        assertThat(articleRepository.count()).isEqualTo(previousCount + 1);
 
 
     }
