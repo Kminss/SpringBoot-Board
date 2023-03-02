@@ -36,7 +36,7 @@ class JpaRepositoryTest {
     void givenTestData_whenSelecting_thenWorksFine() {
         //Given
         long previousCount = articleRepository.count();
-        UserAccount userAccount = userAccountRepository.save(UserAccount.of("mins", "pw", null, null, null));
+        UserAccount userAccount = userAccountRepository.save(UserAccount.of("minsss", "pw", null, null, null));
         Article article = Article.of(userAccount, "new Article", "new Contetnt", "#Spring");
 
         //When
@@ -51,7 +51,7 @@ class JpaRepositoryTest {
     void givenTestData_whenInserting_thenWorksFine() {
         //Given
         long previousCount = articleRepository.count();
-        UserAccount userAccount = userAccountRepository.save(UserAccount.of("mins", "pw", null, null, null));
+        UserAccount userAccount = userAccountRepository.save(UserAccount.of("minssss", "pw", null, null, null));
         Article article = Article.of(userAccount, "new article", "new Content", "#spring");
         //When
         articleRepository.save(article);
