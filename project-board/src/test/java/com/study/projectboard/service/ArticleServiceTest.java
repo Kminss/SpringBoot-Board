@@ -1,10 +1,8 @@
 package com.study.projectboard.service;
 
 import com.study.projectboard.domain.Article;
-import com.study.projectboard.domain.ArticleComment;
 import com.study.projectboard.domain.UserAccount;
 import com.study.projectboard.domain.type.SearchType;
-import com.study.projectboard.dto.ArticleCommentDto;
 import com.study.projectboard.dto.ArticleDto;
 import com.study.projectboard.dto.ArticleWithCommentsDto;
 import com.study.projectboard.dto.UserAccountDto;
@@ -21,6 +19,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
 import java.time.LocalDateTime;
+import java.util.List;
 import java.util.Optional;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -36,6 +35,7 @@ class ArticleServiceTest {
     private ArticleService sut;
     @Mock
     private ArticleRepository articleRepository;
+
     @DisplayName("검색어 없이 게시글을 검색하면, 게시글 페이지를 반환한다.")
     @Test
     void givenNoSearchParameters_whenSearchingArticles_thenReturnsArticlePage() {
@@ -68,6 +68,36 @@ class ArticleServiceTest {
         then(articleRepository).should().findByTitleContaining(searchKeyword, pageable);
     }
 
+    @DisplayName("검색어와 함께 게시글 해시태그 검색하면, 빈 페이지를 반환한다.")
+    @Test
+    void givenSearchParameters_whenSearchingArticlesViaHashtag_thenReturnsEmptyPage() {
+        // Given
+        Pageable pageable = Pageable.ofSize(20);
+
+        // When
+        Page<ArticleDto> articles = sut.searchArticlesViaHashtag(null, pageable);
+
+        // Then
+        assertThat(articles).isEqualTo(Page.empty(pageable));
+        then(articleRepository).shouldHaveNoInteractions();
+    }
+
+    @DisplayName("검색어와 함께 게시글 해시태그 검색하면, 게시글 페이지를 반환한다.")
+    @Test
+    void givenHashtag_whenSearchingArticlesViaHashtag_thenReturnsArticlesPage() {
+        // Given
+        String hashtag = "#Java";
+        Pageable pageable = Pageable.ofSize(20);
+        given(articleRepository.findByHashtag(hashtag, pageable)).willReturn(Page.empty(pageable));
+
+        // When
+        Page<ArticleDto> articles = sut.searchArticlesViaHashtag(hashtag, pageable);
+
+        // Then
+        assertThat(articles).isEqualTo(Page.empty(pageable));
+        then(articleRepository).should().findByHashtag(hashtag, pageable);
+    }
+
     @DisplayName("게시글을 조회하면, 게시글을 반환한다.")
     @Test
     void givenArticleId_whenSearchingArticle_thenReturnsArticle() {
@@ -86,6 +116,7 @@ class ArticleServiceTest {
                 .hasFieldOrPropertyWithValue("hashtag", article.getHashtag());
         then(articleRepository).should().findById(articleId);
     }
+
 
     @DisplayName("없는 게시글을 조회하면, 예외를 던진다.")
     @Test
@@ -165,6 +196,19 @@ class ArticleServiceTest {
         then(articleRepository).should().deleteById(articleId);
     }
 
+    @Test
+    public void givenNothing_whenCalling_thenReturnsHashtags() throws Exception {
+
+        //given
+        List<String> expectedHashtags = List.of("#Java", "#Spring", "#Boot");
+        given(articleRepository.findAllDistinctHashtags()).willReturn(expectedHashtags);
+        //when
+        List<String> actualHashtags = sut.getHashtags();
+
+        //then
+        assertThat(actualHashtags).isEqualTo(expectedHashtags);
+        then(articleRepository).should().findAllDistinctHashtags();
+    }
 
     private UserAccount createUserAccount() {
         return UserAccount.of(
