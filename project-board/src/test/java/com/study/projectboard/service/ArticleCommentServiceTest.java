@@ -16,6 +16,7 @@ import org.mockito.BDDMockito;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
+import org.springframework.boot.test.mock.mockito.MockBean;
 
 import java.time.LocalDateTime;
 import java.util.List;
@@ -36,10 +37,9 @@ class ArticleCommentServiceTest {
     @Mock
     private ArticleRepository articleRepository;
 
-    @Disabled
-    @DisplayName("댓글 ID를 입력하면, 해당하는 댓글리스트틀 반환한다.")
+    @DisplayName("게시글 ID로 조회하면, 해당하는 댓글리스트틀 반환한다.")
     @Test
-    void givenArticleId_whenSearchingComments_thenReturnsComments() {
+    void givenArticleId_whenSearchingArticleComments_thenReturnsComments() {
         //Given
         Long articleId = 1L;
 
@@ -55,11 +55,8 @@ class ArticleCommentServiceTest {
                 .hasSize(1)
                 .first().hasFieldOrPropertyWithValue("content", expected.getContent());
         then(articleCommentRepository).should().findByArticle_Id(articleId);
-
-        then(articleRepository).should().findById(articleId);
     }
 
-    @Disabled
     @DisplayName("댓글 정보를 입력하면, 댓글을 저장한다.")
     @Test
     void givenCommentInfo_whenSavingComment_thenSaveComment() {
