@@ -5,7 +5,19 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="bd55f051-8e51-44e1-b033-630f9c08a00f" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/project-board/src/main/resources/templates/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/project-board/src/main/resources/templates/index.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/sqldialects.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/project-board/src/main/java/com/study/projectboard/controller/ArticleController.java" beforeDir="false" afterPath="$PROJECT_DIR$/project-board/src/main/java/com/study/projectboard/controller/ArticleController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/project-board/src/main/java/com/study/projectboard/domain/Article.java" beforeDir="false" afterPath="$PROJECT_DIR$/project-board/src/main/java/com/study/projectboard/domain/Article.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/project-board/src/main/java/com/study/projectboard/domain/ArticleComment.java" beforeDir="false" afterPath="$PROJECT_DIR$/project-board/src/main/java/com/study/projectboard/domain/ArticleComment.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/project-board/src/main/java/com/study/projectboard/service/ArticleCommentService.java" beforeDir="false" afterPath="$PROJECT_DIR$/project-board/src/main/java/com/study/projectboard/service/ArticleCommentService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/project-board/src/main/resources/application.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/project-board/src/main/resources/data.sql" beforeDir="false" afterPath="$PROJECT_DIR$/project-board/src/main/resources/data.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/project-board/src/test/java/com/study/projectboard/controller/ArticleControllerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/project-board/src/test/java/com/study/projectboard/controller/ArticleControllerTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/project-board/src/test/java/com/study/projectboard/service/ArticleCommentServiceTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/project-board/src/test/java/com/study/projectboard/service/ArticleCommentServiceTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/project-board/src/test/java/com/study/projectboard/service/ArticleServiceTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/project-board/src/test/java/com/study/projectboard/service/ArticleServiceTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -25,7 +37,23 @@
         </task>
         <projects_view>
           <tree_state>
-            <expand />
+            <expand>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="project-board" type="f1a62948:ProjectNode" />
+              </path>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="project-board" type="f1a62948:ProjectNode" />
+                <item name="Tasks" type="e4a08cd1:TasksNode" />
+              </path>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="project-board" type="f1a62948:ProjectNode" />
+                <item name="Tasks" type="e4a08cd1:TasksNode" />
+                <item name="build" type="c8890929:TasksNode$1" />
+              </path>
+            </expand>
             <select />
           </tree_state>
         </projects_view>
@@ -56,6 +84,10 @@
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
     "DefaultHtmlFileTemplate": "HTML File",
+    "RequestMappingsPanelOrder0": "0",
+    "RequestMappingsPanelOrder1": "1",
+    "RequestMappingsPanelWidth0": "75",
+    "RequestMappingsPanelWidth1": "75",
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
@@ -68,10 +100,15 @@
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
     "project.structure.last.edited": "Modules",
-    "project.structure.proportion": "0.0",
-    "project.structure.side.proportion": "0.0",
-    "settings.editor.selected.configurable": "settings.sync",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.2",
+    "settings.editor.selected.configurable": "database.query.execution",
     "vue.rearranger.settings.migration": "true"
+  },
+  "keyToStringList": {
+    "DatabaseDriversLRU": [
+      "mysql"
+    ]
   }
 }]]></component>
   <component name="RecentsManager">
@@ -95,8 +132,8 @@
       </set>
     </option>
   </component>
-  <component name="RunManager" selected="Gradle.ArticleControllerTest.givenHashtag_whenRequestingArticleSearchHashtagView_thenReturnsArticleSearchHashtagView">
-    <configuration name="ArticleControllerTest.givenHashtag_whenRequestingArticleSearchHashtagView_thenReturnsArticleSearchHashtagView" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+  <component name="RunManager" selected="Gradle.project-board [build]">
+    <configuration name="ArticleControllerTest.givenNothing_whenRequestingArticleSearchView_thenReturnsArticleSearchView" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
         <option name="externalProjectPath" value="$PROJECT_DIR$/project-board" />
@@ -109,7 +146,7 @@
           <list>
             <option value=":test" />
             <option value="--tests" />
-            <option value="&quot;com.study.projectboard.controller.ArticleControllerTest.givenHashtag_whenRequestingArticleSearchHashtagView_thenReturnsArticleSearchHashtagView&quot;" />
+            <option value="&quot;com.study.projectboard.controller.ArticleControllerTest.givenNothing_whenRequestingArticleSearchView_thenReturnsArticleSearchView&quot;" />
           </list>
         </option>
         <option name="vmOptions" />
@@ -119,7 +156,7 @@
       <DebugAllEnabled>false</DebugAllEnabled>
       <method v="2" />
     </configuration>
-    <configuration name="FormDataEncoderTest" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+    <configuration name="ArticleServiceTest" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
         <option name="externalProjectPath" value="$PROJECT_DIR$/project-board" />
@@ -132,7 +169,7 @@
           <list>
             <option value=":test" />
             <option value="--tests" />
-            <option value="&quot;com.study.projectboard.util.FormDataEncoderTest&quot;" />
+            <option value="&quot;com.study.projectboard.service.ArticleServiceTest&quot;" />
           </list>
         </option>
         <option name="vmOptions" />
@@ -142,7 +179,7 @@
       <DebugAllEnabled>false</DebugAllEnabled>
       <method v="2" />
     </configuration>
-    <configuration name="FormDataEncoderTest.givenObject_whenEncoding_thenReturnsFormEncodedString" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+    <configuration name="Tests in 'project-board.test'" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
         <option name="externalProjectPath" value="$PROJECT_DIR$/project-board" />
@@ -154,13 +191,53 @@
         <option name="taskNames">
           <list>
             <option value=":test" />
-            <option value="--tests" />
-            <option value="&quot;com.study.projectboard.util.FormDataEncoderTest.givenObject_whenEncoding_thenReturnsFormEncodedString&quot;" />
           </list>
         </option>
         <option name="vmOptions" />
       </ExternalSystemSettings>
       <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <method v="2" />
+    </configuration>
+    <configuration name="project-board [build]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$/project-board" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value="build" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>true</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <method v="2" />
+    </configuration>
+    <configuration name="project-board [clean]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$/project-board" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value="clean" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>true</ExternalSystemDebugServerProcess>
       <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
       <DebugAllEnabled>false</DebugAllEnabled>
       <method v="2" />
@@ -174,9 +251,11 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Gradle.ArticleControllerTest.givenHashtag_whenRequestingArticleSearchHashtagView_thenReturnsArticleSearchHashtagView" />
-        <item itemvalue="Gradle.FormDataEncoderTest" />
-        <item itemvalue="Gradle.FormDataEncoderTest.givenObject_whenEncoding_thenReturnsFormEncodedString" />
+        <item itemvalue="Gradle.project-board [build]" />
+        <item itemvalue="Gradle.project-board [clean]" />
+        <item itemvalue="Gradle.ArticleControllerTest.givenNothing_whenRequestingArticleSearchView_thenReturnsArticleSearchView" />
+        <item itemvalue="Gradle.Tests in 'project-board.test'" />
+        <item itemvalue="Gradle.ArticleServiceTest" />
       </list>
     </recent_temporary>
   </component>
@@ -188,7 +267,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1678527369630</updated>
-      <workItem from="1678527371034" duration="14883000" />
+      <workItem from="1678527371034" duration="18917000" />
     </task>
     <servers />
   </component>
