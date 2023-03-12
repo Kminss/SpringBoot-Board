@@ -5,20 +5,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="bd55f051-8e51-44e1-b033-630f9c08a00f" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/project-board/src/main/java/com/study/projectboard/domain/constant/FormStatus.java" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/project-board/src/main/java/com/study/projectboard/dto/ArticleRequest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/project-board/src/main/java/com/study/projectboard/controller/ArticleController.java" beforeDir="false" afterPath="$PROJECT_DIR$/project-board/src/main/java/com/study/projectboard/controller/ArticleController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/project-board/src/main/java/com/study/projectboard/domain/Article.java" beforeDir="false" afterPath="$PROJECT_DIR$/project-board/src/main/java/com/study/projectboard/domain/Article.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/project-board/src/main/java/com/study/projectboard/domain/ArticleComment.java" beforeDir="false" afterPath="$PROJECT_DIR$/project-board/src/main/java/com/study/projectboard/domain/ArticleComment.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/project-board/src/main/java/com/study/projectboard/domain/UserAccount.java" beforeDir="false" afterPath="$PROJECT_DIR$/project-board/src/main/java/com/study/projectboard/domain/UserAccount.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/project-board/src/main/java/com/study/projectboard/domain/type/SearchType.java" beforeDir="false" afterPath="$PROJECT_DIR$/project-board/src/main/java/com/study/projectboard/domain/constant/SearchType.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/project-board/src/main/java/com/study/projectboard/dto/ArticleDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/project-board/src/main/java/com/study/projectboard/dto/ArticleDto.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/project-board/src/main/java/com/study/projectboard/dto/UserAccountDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/project-board/src/main/java/com/study/projectboard/dto/UserAccountDto.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/project-board/src/main/java/com/study/projectboard/repository/UserAccountRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/project-board/src/main/java/com/study/projectboard/repository/UserAccountRepository.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/project-board/src/main/java/com/study/projectboard/service/ArticleService.java" beforeDir="false" afterPath="$PROJECT_DIR$/project-board/src/main/java/com/study/projectboard/service/ArticleService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/project-board/src/test/java/com/study/projectboard/controller/ArticleControllerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/project-board/src/test/java/com/study/projectboard/controller/ArticleControllerTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/project-board/src/test/java/com/study/projectboard/controller/AuthControllerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/project-board/src/test/java/com/study/projectboard/controller/AuthControllerTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/project-board/src/test/java/com/study/projectboard/service/ArticleCommentServiceTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/project-board/src/test/java/com/study/projectboard/service/ArticleCommentServiceTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/project-board/src/test/java/com/study/projectboard/service/ArticleServiceTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/project-board/src/test/java/com/study/projectboard/service/ArticleServiceTest.java" afterDir="false" />
     </list>
@@ -198,7 +192,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1678527369630</updated>
-      <workItem from="1678527371034" duration="13285000" />
+      <workItem from="1678527371034" duration="14423000" />
     </task>
     <servers />
   </component>
