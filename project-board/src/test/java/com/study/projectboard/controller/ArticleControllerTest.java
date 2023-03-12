@@ -147,7 +147,6 @@ class ArticleControllerTest {
         then(articleService).should().getArticleWithComments(articleId);
         then(articleService).should().getArticleCount();
     }
-
     @Disabled("구현 중")
     @DisplayName("[view] [GET] 게시글 검색 전용 페이지 - 정상 호출")
     @Test
@@ -190,9 +189,11 @@ class ArticleControllerTest {
     @Test
     public void givenHashtag_whenRequestingArticleSearchHashtagView_thenReturnsArticleSearchHashtagView() throws Exception {
         // Given
-        String hashtag = "Java";
+        String hashtag = "#Java";
         List<String> hashtags = List.of("#Java", "#Spring", "#Boot");
         given(articleService.searchArticlesViaHashtag(eq(hashtag), any(Pageable.class))).willReturn(Page.empty());
+        given(articleService.getHashtags()).willReturn(hashtags);
+        given(paginationService.getPaginationBarNumbers(anyInt(), anyInt())).willReturn(List.of(1, 2, 3, 4, 5));
         //When & Then
         mvc.perform(get("/articles/search-hashtag")
                         .queryParam("searchValue", hashtag))
@@ -306,7 +307,7 @@ class ArticleControllerTest {
                 createUserAccountDto(),
                 "title",
                 "content",
-                "#java"
+                "#Java"
         );
     }
     private ArticleWithCommentsDto createArticleWithCommentDto() {
@@ -315,7 +316,7 @@ class ArticleControllerTest {
                 Set.of(),
                 "title",
                 "content",
-                "#java",
+                "#Java",
                 LocalDateTime.now(),
                 "mins",
                 LocalDateTime.now(),
