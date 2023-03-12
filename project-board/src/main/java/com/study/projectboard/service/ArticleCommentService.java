@@ -34,7 +34,7 @@ public class ArticleCommentService {
         if (articleDto.isEmpty()) {
             throw new EntityNotFoundException("게시글이 없습니다. article ID: " + dto.articleId());
         }
-        articleCommentRepository.save(dto.toEntity(articleDto.get().toEntity()));
+        articleCommentRepository.save(dto.toEntity(articleDto.get().toEntity(dto.userAccountDto().toEntity())));
     }
 
     public void updateArticleComment(ArticleCommentDto dto) {
