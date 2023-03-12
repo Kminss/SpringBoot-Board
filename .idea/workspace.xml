@@ -5,10 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="bd55f051-8e51-44e1-b033-630f9c08a00f" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/project-board/src/main/resources/templates/articles/detail.html" beforeDir="false" afterPath="$PROJECT_DIR$/project-board/src/main/resources/templates/articles/detail.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/project-board/src/main/resources/templates/articles/detail.th.xml" beforeDir="false" afterPath="$PROJECT_DIR$/project-board/src/main/resources/templates/articles/detail.th.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/project-board/src/main/resources/templates/articles/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/project-board/src/main/resources/templates/articles/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/project-board/src/main/resources/templates/articles/index.th.xml" beforeDir="false" afterPath="$PROJECT_DIR$/project-board/src/main/resources/templates/articles/index.th.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/project-board/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/project-board/build.gradle" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -67,6 +65,15 @@
       </set>
     </option>
   </component>
+  <component name="RunManager">
+    <configuration name="ProjectBoardApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
+      <module name="project-board.main" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.study.projectboard.ProjectBoardApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+  </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
@@ -75,7 +82,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1678527369630</updated>
-      <workItem from="1678527371034" duration="5897000" />
+      <workItem from="1678527371034" duration="6292000" />
     </task>
     <servers />
   </component>

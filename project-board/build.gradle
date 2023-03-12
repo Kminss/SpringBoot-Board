@@ -38,6 +38,7 @@ dependencies {
     annotationProcessor 'org.projectlombok:lombok'
     annotationProcessor 'org.springframework.boot:spring-boot-configuration-processor'
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
+    testImplementation 'org.springframework.security:spring-security-test'
     //QueryDSL 설정
     implementation "com.querydsl:querydsl-jpa:5.0.0:jakarta"
     implementation "com.querydsl:querydsl-core"
