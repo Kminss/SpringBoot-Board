@@ -7,6 +7,7 @@ import com.study.projectboard.dto.ArticleCommentDto;
 import com.study.projectboard.dto.UserAccountDto;
 import com.study.projectboard.repository.ArticleCommentRepository;
 import com.study.projectboard.repository.ArticleRepository;
+import com.study.projectboard.repository.UserAccountRepository;
 import jakarta.persistence.EntityNotFoundException;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.DisplayName;
@@ -33,6 +34,9 @@ class ArticleCommentServiceTest {
     @Mock
     private ArticleRepository articleRepository;
 
+    @Mock
+    private UserAccountRepository userAccountRepository;
+
     @DisplayName("게시글 ID로 조회하면, 해당하는 댓글리스트틀 반환한다.")
     @Test
     void givenArticleId_whenSearchingArticleComments_thenReturnsComments() {
@@ -52,24 +56,22 @@ class ArticleCommentServiceTest {
                 .first().hasFieldOrPropertyWithValue("content", expected.getContent());
         then(articleCommentRepository).should().findByArticle_Id(articleId);
     }
-    @Disabled
     @DisplayName("댓글 정보를 입력하면, 댓글을 저장한다.")
     @Test
     void givenCommentInfo_whenSavingComment_thenSaveComment() {
         //Given
         ArticleCommentDto dto = createArticleCommentDto("댓글");
-        given(articleRepository.getReferenceById(dto.articleId())).willReturn(null);
-
+        given(articleRepository.getReferenceById(dto.articleId())).willReturn(createArticle());
+        given(articleCommentRepository.save(any(ArticleComment.class))).willReturn(null);
+        given(userAccountRepository.getReferenceById(dto.userAccountDto().userId())).willReturn(createUserAccount());
         //When
         sut.saveArticleComment(dto);
-
-
         //Then
         then(articleRepository).should().getReferenceById(dto.articleId());
+        then(userAccountRepository).should().getReferenceById(dto.userAccountDto().userId());
         then(articleCommentRepository).should().save(any(ArticleComment.class));
     }
 
-    @Disabled
     @DisplayName("댓글 저장 시 맞는 게시글이 없으면, 경고 로그를 찍고 아무것도 안한다.")
     @Test
     void givenNoexistentArticle_whenSavingArticleComment_thenLogsSituationAndDoesNothing() {
@@ -82,10 +84,10 @@ class ArticleCommentServiceTest {
 
         //Then
         then(articleRepository).should().getReferenceById(dto.articleId());
+        then(userAccountRepository).shouldHaveNoInteractions();
         then(articleCommentRepository).shouldHaveNoInteractions();
     }
 
-    @Disabled
     @DisplayName("댓글 정보를 입력하면, 댓글을 수정한다.")
     @Test
     void givenArticleCommentInfo_whenUpdatingArticleComment_thenUpdateArticleComment() {
@@ -107,7 +109,6 @@ class ArticleCommentServiceTest {
         then(articleCommentRepository).should().getReferenceById(dto.id());
     }
 
-    @Disabled
     @DisplayName("없는 댓글 정보를 수정할 시, 경고 로그를 찍고 아무 것도 안 한다.")
     @Test
     void givenNoexistenArticleCommen_whenUpdatingArticleComment_thenLogsWarningAndDoesNothing() {
@@ -122,7 +123,6 @@ class ArticleCommentServiceTest {
         then(articleCommentRepository).should().getReferenceById(dto.id());
     }
 
-    @Disabled
     @DisplayName("댓글 ID를 입력하면, 댓글을 삭제한다.")
     @Test
     void givenArticleCommentId_whenDeletingArticleComment_thenDeleteArticleComment() {
@@ -146,23 +146,19 @@ class ArticleCommentServiceTest {
                 createUserAccountDto(),
                 content,
                 LocalDateTime.now(),
-                "uno",
+                "mins",
                 LocalDateTime.now(),
-                "uno"
+                "mins"
         );
     }
 
     private UserAccountDto createUserAccountDto() {
         return UserAccountDto.of(
-                "uno",
+                "mins",
                 "password",
-                "uno@mail.com",
-                "Uno",
-                "This is memo",
-                LocalDateTime.now(),
-                "uno",
-                LocalDateTime.now(),
-                "uno"
+                "mins@mail.com",
+                "mins",
+                "This is memo"
         );
     }
 
@@ -176,11 +172,19 @@ class ArticleCommentServiceTest {
 
     private UserAccount createUserAccount() {
         return UserAccount.of(
-                "uno",
+                "mins",
                 "password",
-                "uno@email.com",
-                "Uno",
+                "mins@email.com",
+                "mins",
                 null
+        );
+    }
+    private Article createArticle() {
+        return Article.of(
+                createUserAccount(),
+                "title",
+                "content",
+                "#Java"
         );
     }
 }
