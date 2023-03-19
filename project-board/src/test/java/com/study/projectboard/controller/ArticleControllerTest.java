@@ -4,7 +4,7 @@ import com.study.projectboard.config.SecurityConfig;
 import com.study.projectboard.domain.constant.FormStatus;
 import com.study.projectboard.domain.constant.SearchType;
 import com.study.projectboard.dto.ArticleDto;
-import com.study.projectboard.dto.ArticleRequest;
+import com.study.projectboard.dto.request.ArticleRequest;
 import com.study.projectboard.dto.ArticleWithCommentsDto;
 import com.study.projectboard.dto.UserAccountDto;
 import com.study.projectboard.dto.response.ArticleResponse;
@@ -330,11 +330,7 @@ class ArticleControllerTest {
                 "pw",
                 "uno@mail.com",
                 "mins",
-                "memo",
-                LocalDateTime.now(),
-                "mins",
-                LocalDateTime.now(),
-                "uno"
+                "memo"
         );
     }
 }

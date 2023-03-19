@@ -2,7 +2,7 @@ package com.study.projectboard.controller;
 
 import com.study.projectboard.domain.constant.FormStatus;
 import com.study.projectboard.domain.constant.SearchType;
-import com.study.projectboard.dto.ArticleRequest;
+import com.study.projectboard.dto.request.ArticleRequest;
 import com.study.projectboard.dto.UserAccountDto;
 import com.study.projectboard.dto.response.ArticleResponse;
 import com.study.projectboard.dto.response.ArticleWithCommentsResponse;

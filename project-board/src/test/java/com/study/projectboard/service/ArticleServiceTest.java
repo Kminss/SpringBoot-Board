@@ -289,11 +289,7 @@ class ArticleServiceTest {
                 "password",
                 "mins@mail.com",
                 "Mins",
-                "This is memo",
-                LocalDateTime.now(),
-                "mins",
-                LocalDateTime.now(),
-                "mins"
+                "This is memo"
         );
     }
 }
