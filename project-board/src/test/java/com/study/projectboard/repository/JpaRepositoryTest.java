@@ -7,10 +7,13 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
+import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Import;
+import org.springframework.data.domain.AuditorAware;
 import org.springframework.test.context.ActiveProfiles;
 
 import java.util.List;
+import java.util.Optional;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -46,7 +49,7 @@ class JpaRepositoryTest {
                 .isEqualTo(previousCount + 1);
     }
 
-    @DisplayName("create 테스트")
+    @DisplayName("insert 테스트")
     @Test
     void givenTestData_whenInserting_thenWorksFine() {
         //Given
@@ -85,5 +88,12 @@ class JpaRepositoryTest {
 
         assertThat(articleRepository.count()).isEqualTo(previousArticleCount - 1);
         assertThat(articleCommentRepository.count()).isEqualTo(previousArticleCommentCount - deletedCommentSize);
+    }
+
+    public static class TestJpaConfig {
+        @Bean
+        public AuditorAware<String> auditorAware() {
+            return () -> Optional.of("mins");
+        }
     }
 }

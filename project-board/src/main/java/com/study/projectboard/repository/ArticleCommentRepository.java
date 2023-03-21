@@ -20,6 +20,8 @@ public interface ArticleCommentRepository extends
 {
     List<ArticleComment> findByArticle_Id(Long articleId);
 
+    void deleteByIdAndUserAccount_UserId(Long articleCommentId, String userId);
+
     @Override
     default void customize(QuerydslBindings bindings, QArticle root) { //Spring data JPA를 이욯하여 사용하기때문에 인터페이스 구현체를 만들지 않음
         bindings.excludeUnlistedProperties(true);
