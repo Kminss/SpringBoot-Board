@@ -8,8 +8,6 @@ import com.study.projectboard.dto.UserAccountDto;
 import com.study.projectboard.repository.ArticleCommentRepository;
 import com.study.projectboard.repository.ArticleRepository;
 import com.study.projectboard.repository.UserAccountRepository;
-import jakarta.persistence.EntityNotFoundException;
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -17,6 +15,7 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 
+import javax.persistence.EntityNotFoundException;
 import java.time.LocalDateTime;
 import java.util.List;
 
@@ -135,7 +134,7 @@ class ArticleCommentServiceTest {
         sut.deleteArticleComment(articleCommentId, userId);
 
         //Then
-        then(articleCommentRepository).should().deleteById(articleCommentId);
+        then(articleCommentRepository).should().deleteByIdAndUserAccount_UserId(articleCommentId, userId);
 
     }
 

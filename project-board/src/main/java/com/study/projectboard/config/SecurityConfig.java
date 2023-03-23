@@ -21,16 +21,18 @@ public class SecurityConfig {
         return http
                 .authorizeHttpRequests(auth -> auth
                         .requestMatchers(PathRequest.toStaticResources().atCommonLocations()).permitAll()
-                        .requestMatchers(HttpMethod.GET,
+                        .mvcMatchers(
+                                HttpMethod.GET,
                                 "/",
                                 "/articles",
-                                "/articles/search-hashtag").permitAll()
+                                "/articles/search-hashtag"
+                        ).permitAll()
                         .anyRequest().authenticated()
                 )
                 .formLogin().and()
                 .logout()
-                    .logoutSuccessUrl("/")
-                    .and()
+                .logoutSuccessUrl("/")
+                .and()
                 .build();
     }
 

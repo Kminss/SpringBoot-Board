@@ -7,7 +7,6 @@ import com.study.projectboard.dto.ArticleDto;
 import com.study.projectboard.dto.ArticleWithCommentsDto;
 import com.study.projectboard.repository.ArticleRepository;
 import com.study.projectboard.repository.UserAccountRepository;
-import jakarta.persistence.EntityNotFoundException;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.domain.Page;
@@ -15,6 +14,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import javax.persistence.EntityNotFoundException;
 import java.util.List;
 
 

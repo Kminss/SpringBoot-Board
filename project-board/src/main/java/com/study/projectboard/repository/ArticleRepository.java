@@ -4,7 +4,6 @@ import com.querydsl.core.types.dsl.DateTimeExpression;
 import com.querydsl.core.types.dsl.StringExpression;
 import com.study.projectboard.domain.Article;
 import com.study.projectboard.domain.QArticle;
-import com.study.projectboard.dto.ArticleDto;
 import com.study.projectboard.repository.querydsl.ArticleRepositoryCustom;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
