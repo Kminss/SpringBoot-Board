@@ -78,3 +78,10 @@ tasks.named('test') {
 clean {
     delete file(generated)
 }
+
+// Heroku 설정
+jar {
+    manifest {
+        attributes('Main-Class': 'com.study.projectboard.ProjectBoardApplication')
+    }
+}
