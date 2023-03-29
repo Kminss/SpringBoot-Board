@@ -14,14 +14,16 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 
 @DisplayName("테스트 도구 - Form Data Encoder")
-@Import({FormDataEncoder.class, ObjectMapper.class})
-@SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.NONE, classes = void.class)
+@SpringBootTest(
+        webEnvironment = SpringBootTest.WebEnvironment.NONE,
+        classes = {FormDataEncoder.class, ObjectMapper.class})
 class FormDataEncoderTest {
     private final FormDataEncoder formDataEncoder;
 
     FormDataEncoderTest(@Autowired FormDataEncoder formDataEncoder) {
         this.formDataEncoder = formDataEncoder;
     }
+
     @DisplayName("객체를 넣으면, url encoding 된 form body data 형식의 문자열을 돌려준다.")
     @Test
     void givenObject_whenEncoding_thenReturnsFormEncodedString() {
@@ -64,7 +66,8 @@ class FormDataEncoderTest {
             Boolean bool,
             BigDecimal bigDecimal,
             TestEnum testEnum
-    ) {}
+    ) {
+    }
 
     enum TestEnum {
         ONE, TWO, THREE
