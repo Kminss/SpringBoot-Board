@@ -54,6 +54,7 @@ public class Article extends AuditingFields {
         return new Article(userAccount, title, content, hashtag);
     }
 
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
