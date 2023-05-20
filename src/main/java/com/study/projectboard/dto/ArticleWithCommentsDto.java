@@ -1,6 +1,7 @@
 package com.study.projectboard.dto;
 
 import com.study.projectboard.domain.Article;
+import com.study.projectboard.domain.Hashtag;
 
 import java.time.LocalDateTime;
 import java.util.Set;
@@ -12,14 +13,14 @@ public record ArticleWithCommentsDto(Long id,
                                      Set<ArticleCommentDto> articleCommentsDto,
                                      String title,
                                      String content,
-                                     String hashtag,
+                                     Set<HashtagDto> hashtagDtos,
                                      LocalDateTime createdAt,
                                      String createdBy,
                                      LocalDateTime modifiedAt,
                                      String modifiedBy
 ) {
-    public static ArticleWithCommentsDto of(Long id, UserAccountDto userAccountDto, Set<ArticleCommentDto> articleCommentsDto, String title, String content, String hashtag, LocalDateTime createdAt, String createdBy, LocalDateTime modifiedAt, String modifiedBy) {
-        return new ArticleWithCommentsDto(id, userAccountDto, articleCommentsDto, title, content, hashtag, createdAt, createdBy, modifiedAt, modifiedBy);
+    public static ArticleWithCommentsDto of(Long id, UserAccountDto userAccountDto, Set<ArticleCommentDto> articleCommentsDto, String title, String content, Set<HashtagDto> hashtagDtos, LocalDateTime createdAt, String createdBy, LocalDateTime modifiedAt, String modifiedBy) {
+        return new ArticleWithCommentsDto(id, userAccountDto, articleCommentsDto, title, content, hashtagDtos, createdAt, createdBy, modifiedAt, modifiedBy);
     }
 
     public static ArticleWithCommentsDto from(Article entity) {
@@ -31,7 +32,9 @@ public record ArticleWithCommentsDto(Long id,
                         .collect(Collectors.toCollection(LinkedHashSet::new)),
                 entity.getTitle(),
                 entity.getContent(),
-                entity.getHashtag(),
+                entity.getHashtags().stream()
+                        .map(HashtagDto::from)
+                        .collect(Collectors.toUnmodifiableSet()),
                 entity.getCreatedAt(),
                 entity.getCreatedBy(),
                 entity.getModifiedAt(),

@@ -49,7 +49,11 @@ public record BoardPrincipal(
                 password,
                 email,
                 nickname,
-                memo
+                memo,
+                null,
+                null,
+                null,
+                null
         );
     }
     @Override

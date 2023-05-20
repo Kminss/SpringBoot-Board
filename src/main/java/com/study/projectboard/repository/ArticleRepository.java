@@ -24,16 +24,15 @@ public interface ArticleRepository extends
     Page<Article> findByContentContaining(String content, Pageable pageable);
     Page<Article> findByUserAccount_UserIdContaining(String userId, Pageable pageable);
     Page<Article> findByUserAccount_Nickname(String nickname, Pageable pageable);
-    Page<Article> findByHashtag(String hashtag, Pageable pageable);
 
     void deleteByIdAndUserAccount_UserId(Long articleId, String userId);
     @Override
     default void customize(QuerydslBindings bindings, QArticle root) { //Spring data JPA를 이욯하여 사용하기때문에 인터페이스 구현체를 만들지 않음
         bindings.excludeUnlistedProperties(true);
-        bindings.including(root.title, root.content, root.hashtag, root.createdAt, root.createdBy);
+        bindings.including(root.title, root.content, root.hashtags, root.createdAt, root.createdBy);
         bindings.bind(root.title).first(StringExpression::containsIgnoreCase); //  like '${v}'
         bindings.bind(root.content).first(StringExpression::containsIgnoreCase); //  like '${v}'
-        bindings.bind(root.hashtag).first(StringExpression::containsIgnoreCase); //  like '${v}'
+        bindings.bind(root.hashtags.any().hashtagName).first(StringExpression::containsIgnoreCase); //  like '${v}'
         bindings.bind(root.createdBy).first(StringExpression::containsIgnoreCase); //  like '${v}'
         bindings.bind(root.createdAt).first(DateTimeExpression::eq); //  like '${v}'
         //bindings.bind(root.title).first(StringExpression::likeIgnoreCase);      //like '%${V}%'

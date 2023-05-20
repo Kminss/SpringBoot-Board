@@ -5,6 +5,7 @@ import com.study.projectboard.domain.constant.FormStatus;
 import com.study.projectboard.domain.constant.SearchType;
 import com.study.projectboard.dto.ArticleDto;
 import com.study.projectboard.dto.ArticleWithCommentsDto;
+import com.study.projectboard.dto.HashtagDto;
 import com.study.projectboard.dto.UserAccountDto;
 import com.study.projectboard.dto.request.ArticleRequest;
 import com.study.projectboard.dto.response.ArticleResponse;
@@ -70,7 +71,9 @@ class ArticleControllerTest {
                 .andExpect(content().contentTypeCompatibleWith(MediaType.TEXT_HTML))
                 .andExpect(view().name("articles/index"))
                 .andExpect(model().attributeExists("articles"))
-                .andExpect(model().attributeExists("paginationBarNumbers"));
+                .andExpect(model().attributeExists("paginationBarNumbers"))
+                .andExpect(model().attributeExists("searchTypes"))
+                .andExpect(model().attribute("searchTypeHashtag", SearchType.HASHTAG));
 
         then(articleService).should().searchArticles(eq(null), eq(null), any(Pageable.class));
         then(paginationService).should().getPaginationBarNumbers(anyInt(), anyInt());
@@ -81,6 +84,7 @@ class ArticleControllerTest {
     void givenPagingAndSortingParams_whenRequestingArticlesPages_thenReturnsArticlesView() throws Exception {
         // Given
         String sortName = "title";
+        String direction = "desc";
         int pageNumber = 0;
         int pageSize = 5;
 
@@ -94,7 +98,7 @@ class ArticleControllerTest {
                         get("/articles")
                                 .queryParam("page", String.valueOf(pageNumber))
                                 .queryParam("size", String.valueOf(pageSize))
-                                .queryParam("sort", sortName)
+                                .queryParam("sort", sortName + "," + direction)
                 )
                 .andExpect(status().isOk())
                 .andExpect(content().contentTypeCompatibleWith(MediaType.TEXT_HTML))
@@ -136,7 +140,7 @@ class ArticleControllerTest {
     @WithMockUser
     @DisplayName("[view] [GET] 게시글 상세 페이지 - 정상 호출, 인증된 사용자")
     @Test
-    void givenNothing_whenRequestingArticleView_thenReturnsArticleViewWithAuth() throws Exception {
+    void givenAuthorizedUser_whenRequestingArticleView_thenReturnsArticleViewWithAuth() throws Exception {
         // Given
         Long articleId = 1L;
         long totalCount = 1L;
@@ -148,7 +152,9 @@ class ArticleControllerTest {
                 .andExpect(content().contentTypeCompatibleWith(MediaType.TEXT_HTML))
                 .andExpect(view().name("articles/detail"))
                 .andExpect(model().attributeExists("article"))
-                .andExpect(model().attributeExists("articleComments"));
+                .andExpect(model().attributeExists("articleComments"))
+                .andExpect(model().attribute("totalCount", totalCount))
+                .andExpect(model().attribute("searchTypeHashtag", SearchType.HASHTAG));
         then(articleService).should().getArticleWithComments(articleId);
         then(articleService).should().getArticleCount();
     }
@@ -250,7 +256,7 @@ class ArticleControllerTest {
     @Test
     void givenNewArticleInfo_whenRequesting_thenSavesNewArticle() throws Exception {
         // Given
-        ArticleRequest articleRequest = ArticleRequest.of("new title", "new content", "#new");
+        ArticleRequest articleRequest = ArticleRequest.of("new title", "new content");
         willDoNothing().given(articleService).saveArticle(any(ArticleDto.class));
 
         // When & Then
@@ -288,7 +294,7 @@ class ArticleControllerTest {
 
     @DisplayName("[view][GET] 게시글 수정 페이지 - 인증 없을 땐 로그인 페이지로 이동")
     @Test
-    void givenNothing_whenRequesting_thenReturnsUpdatedArticlePage() throws Exception {
+    void givenAuthorizedUser_whenRequesting_thenReturnsUpdatedArticlePage() throws Exception {
         // Given
         long articleId = 1L;
         ArticleDto dto = createArticleDto();
@@ -307,7 +313,7 @@ class ArticleControllerTest {
     void givenUpdatedArticleInfo_whenRequesting_thenUpdatesNewArticle() throws Exception {
         // Given
         long articleId = 1L;
-        ArticleRequest articleRequest = ArticleRequest.of("new title", "new content", "#new");
+        ArticleRequest articleRequest = ArticleRequest.of("new title", "new content");
         willDoNothing().given(articleService).updateArticle(eq(articleId), any(ArticleDto.class));
 
         // When & Then
@@ -350,7 +356,7 @@ class ArticleControllerTest {
                 createUserAccountDto(),
                 "title",
                 "content",
-                "#Java"
+                Set.of(HashtagDto.of("java"))
         );
     }
 
@@ -360,7 +366,7 @@ class ArticleControllerTest {
                 Set.of(),
                 "title",
                 "content",
-                "#Java",
+                Set.of(HashtagDto.of("java")),
                 LocalDateTime.now(),
                 "mins",
                 LocalDateTime.now(),
@@ -374,7 +380,11 @@ class ArticleControllerTest {
                 "pw",
                 "uno@mail.com",
                 "mins",
-                "memo"
+                "memo",
+                null,
+                null,
+                null,
+                null
         );
     }
 }
