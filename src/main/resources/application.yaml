@@ -1,14 +1,10 @@
 debug: false
-management:
-  endpoints:
-    web:
-      exposure:
-        include: "*"
+management.endpoints.web.exposure.include: "*"
+
 logging:
   level:
-    com.study.projectboard: debug
+    com.study.com.study.projectboard: debug
     org.springframework.web.servlet: debug
-    org.hibernate.sql: debug
     org.hibernate.type.descriptor.sql.BasicBinder: trace
 
 spring:
@@ -17,40 +13,26 @@ spring:
     username: user
     password: user
     driver-class-name: com.mysql.cj.jdbc.Driver
-
-
-
   jpa:
-    defer-datasource-initialization: true
-    hibernate:
-      ddl-auto: create
     open-in-view: false
+    defer-datasource-initialization: true
+    hibernate.ddl-auto: create
     show-sql: true
     properties:
-      hibernate:
-        format_sql: true
-        default_batch_fetch_size: 100
-
-  sql:
-    init:
-      mode: always
+      hibernate.format_sql: true
+      hibernate.default_batch_fetch_size: 100
+  sql.init.mode: always
   data.rest:
-      base-path: /api
-      detection-strategy: annotated
+    base-path: /api
+    detection-strategy: annotated
   thymeleaf3.decoupled-logic: true
 
 ---
 
 spring:
-  config:
-    activate:
-      on-profile: heroku
+  config.activate.on-profile: heroku
   datasource:
-    url: ${JAWSDB_URL}
+    url: ${CLEARDB_DATABASE_URL}
     driver-class-name: com.mysql.cj.jdbc.Driver
-  jpa:
-    hibernate:
-      ddl-auto: create
-  sql:
-    init:
-      mode: always
+  jpa.hibernate.ddl-auto: create
+  sql.init.mode: never
