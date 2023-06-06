@@ -1,6 +1,5 @@
 package com.study.projectboard.repository;
 
-import com.study.projectboard.config.JpaConfig;
 import com.study.projectboard.domain.Article;
 import com.study.projectboard.domain.Hashtag;
 import com.study.projectboard.domain.UserAccount;
@@ -19,7 +18,6 @@ import java.util.List;
 import java.util.Optional;
 import java.util.Set;
 
-import static org.assertj.core.api.Assertions.as;
 import static org.assertj.core.api.Assertions.assertThat;
 
 @ActiveProfiles("testdb")
@@ -86,7 +84,7 @@ class JpaRepositoryTest {
         //Then
         assertThat(savedArticle.getHashtags())
                 .hasSize(1)
-                .extracting("hashName", String.class)
+                .extracting("hashtagName", String.class)
                 .containsExactly(updateHashtag.getHashtagName());
     }
 
