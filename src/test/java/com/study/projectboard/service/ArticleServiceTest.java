@@ -96,9 +96,9 @@ class ArticleServiceTest {
         then(hashtagRepository).shouldHaveNoInteractions();
         then(articleRepository).shouldHaveNoInteractions();
     }
-
+    @DisplayName("없는 해시태그를 검색하면, 빈 페이지를 반환한다.")
     @Test
-    void givenNoneexistenHashtag_whenSearchingArticlesViahashtag_thenReturnsEmptyPage () throws Exception {
+    void givenNonexistenHashtag_whenSearchingArticlesViaHashtag_thenReturnsEmptyPage () throws Exception {
         //Given
         String hashtagName = "None Hashtag";
         Pageable pageable = Pageable.ofSize(20);
@@ -145,7 +145,7 @@ class ArticleServiceTest {
         assertThat(dto)
                 .hasFieldOrPropertyWithValue("title", article.getTitle())
                 .hasFieldOrPropertyWithValue("content", article.getContent())
-                .hasFieldOrPropertyWithValue("hashtag", article.getHashtags().stream()
+                .hasFieldOrPropertyWithValue("hashtagDtos", article.getHashtags().stream()
                         .map(HashtagDto::from)
                         .collect(Collectors.toUnmodifiableSet()));
         then(articleRepository).should().findById(articleId);
@@ -289,6 +289,7 @@ class ArticleServiceTest {
         //Given
         Long diffArticleId = 22L;
         Article diffArticle = createArticle(diffArticleId);
+        diffArticle.setUserAccount(createUserAccount("John"));
         ArticleDto dto = createArticleDto("새 타이틀", "새 내용");
 
         given(articleRepository.getReferenceById(diffArticleId)).willReturn(diffArticle);
@@ -323,26 +324,30 @@ class ArticleServiceTest {
         then(hashtagService).should(times(2)).deleteHashtagWithoutArticles(any());
     }
 
+    @DisplayName("해시태그를 조회하면, 유니크 해시태그 리스트를 반환한다")
     @Test
     public void givenNothing_whenCalling_thenReturnsHashtags() {
 
         //given
         List<String> expectedHashtags = List.of("#Java", "#Spring", "#Boot");
-        given(articleRepository.findAllDistinctHashtags()).willReturn(expectedHashtags);
+        given(hashtagRepository.findAllHashtagNames()).willReturn(expectedHashtags);
         //when
         List<String> actualHashtags = sut.getHashtags();
 
         //then
         assertThat(actualHashtags).isEqualTo(expectedHashtags);
-        then(articleRepository).should().findAllDistinctHashtags();
+        then(hashtagRepository).should().findAllHashtagNames();
     }
 
     private UserAccount createUserAccount() {
+        return createUserAccount("Mins");
+    }
+    private UserAccount createUserAccount(String userId) {
         return UserAccount.of(
-                "mins",
+                userId.toLowerCase(),
                 "password",
-                "uno@email.com",
-                "Uno",
+                userId.toLowerCase() +"@email.com",
+                userId,
                 null
         );
     }
